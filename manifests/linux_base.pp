@@ -10,4 +10,5 @@ class role::linux_base {
   include profile::linux_motd
   include profile::linux_user
   include profile::linux_cron
+  include profile::linux_package
 }
