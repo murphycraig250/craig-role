@@ -4,6 +4,7 @@ require 'spec_helper'
 
 describe 'role::linux_base' do
   on_supported_os.each do |os, os_facts|
+    next if os_facts[:os]['family'] == 'windows'
     context "on #{os}" do
       let(:facts) { os_facts }
 

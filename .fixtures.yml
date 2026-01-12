@@ -3,4 +3,14 @@
 ---
 fixtures:
   forge_modules:
-#     stdlib: "puppetlabs/stdlib"
+    motd: "puppetlabs-motd"
+    registry: "puppetlabs-registry"
+    apache: "puppetlabs-apache"
+    stdlib: "puppetlabs-stdlib"
+    apt: "puppetlabs-apt"
+    accounts: "puppetlabs-accounts"
+    cron: "puppet-cron"
+    sudo: "saz-sudo"
+    sshkeys_core: "puppetlabs-sshkeys_core"
+  repositories:
+    profile: "https://x-access-token:${GITHUB_TOKEN}@github.com/murphycraig250/craig-profile.git"

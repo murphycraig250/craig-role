@@ -16,7 +16,7 @@
 /log/
 /pkg/
 /spec/fixtures/manifests/
-/spec/fixtures/modules/*
+/spec/fixtures/modules/
 /tmp/
 /vendor/
 /.vendor/
@@ -33,3 +33,4 @@
 .plan_cache.json
 .rerun.json
 bolt-debug.log
+/.pdk/
