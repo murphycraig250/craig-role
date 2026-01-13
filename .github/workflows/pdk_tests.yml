@@ -1,0 +1,23 @@
+name: Puppet Unit Tests
+
+on: [push, pull_request]
+
+jobs:
+  unit_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Role Code
+        uses: actions/checkout@v4
+
+      - name: Setup PDK
+        uses: puppetlabs/pdk-action@v3
+        with:
+          pdk-version: 'latest'
+
+      - name: Run PDK Validate
+        run: pdk validate
+
+      - name: Run Unit Tests
+        run: pdk test unit
+        env:
+          GITHUB_TOKEN: ${{ secrets.PROFILES_TOKEN }}
