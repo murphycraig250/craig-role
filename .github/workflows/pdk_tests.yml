@@ -18,7 +18,7 @@ jobs:
         run: git config --global --add safe.directory /__w/craig-role/craig-role
 
       - name: Run PDK Validate
-        run: pdk validate
+        run: pdk validate puppet ruby --parallel
 
       - name: Run Unit Tests
         run: pdk test unit
