@@ -17,4 +17,7 @@ class role::linux_base {
   if lookup('profile::linux_nfsclient::enabled', Boolean, 'first', false) {
     include profile::linux_nfsclient
   }
+  if lookup('profile::linux_nginx::enabled', Boolean, 'first', false) {
+    include profile::linux_nginx
+  }
 }
