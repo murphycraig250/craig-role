@@ -11,13 +11,4 @@ class role::linux_base {
   include profile::linux_user
   include profile::linux_cron
   include profile::linux_packages
-  if lookup('profile::linux_nfsserver::enabled', Boolean, 'first', false) {
-    include profile::linux_nfsserver
-  }
-  if lookup('profile::linux_nfsclient::enabled', Boolean, 'first', false) {
-    include profile::linux_nfsclient
-  }
-  if lookup('profile::linux_nginx::enabled', Boolean, 'first', false) {
-    include profile::linux_nginx
-  }
 }
