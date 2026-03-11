@@ -8,8 +8,8 @@ class role::linux_base {
   include profile::base_linux
   #include profile::apache
   include profile::linux_motd
-  include profile::linux_user
   include profile::linux_group
+  include profile::linux_user
   include profile::linux_cron
   include profile::linux_packages
 }
