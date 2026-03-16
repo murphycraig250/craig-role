@@ -12,25 +12,39 @@ class role::linux_firewall {
   -> Class['profile::linux_firewall::rules']
   -> Class['profile::linux_firewall::post']
 
+# 1. Purge the INPUT chain (Host Security)
   firewallchain { 'INPUT:filter:IPv4':
     purge => true,
   }
 
-# 2. Manage the FORWARD chain but ignore Docker's jumps
+  # 2. Purge the FORWARD chain but ignore Docker's bridges
   firewallchain { 'FORWARD:filter:IPv4':
     purge  => true,
     ignore => [
       'DOCKER-USER',
       'DOCKER-FORWARD',
-      'DOCKER-ISOLATION', # Added this just in case
+      'DOCKER-ISOLATION',
     ],
   }
 
-# 3. Explicitly tell Puppet to leave the NAT table alone
+  # 3. Protect Docker's internal filter chains from being emptied
+  firewallchain { [
+      'DOCKER:filter:IPv4',
+      'DOCKER-BRIDGE:filter:IPv4',
+      'DOCKER-CT:filter:IPv4',
+      'DOCKER-FORWARD:filter:IPv4',
+      'DOCKER-INTERNAL:filter:IPv4',
+      'DOCKER-USER:filter:IPv4',
+    ]:
+      purge => false,
+  }
+
+  # 4. Protect the NAT table (Vital for Container Internet/Port Mapping)
   firewallchain { [
       'PREROUTING:nat:IPv4',
-      'POSTROUTING:nat:IPv4',
+      'INPUT:nat:IPv4',
       'OUTPUT:nat:IPv4',
+      'POSTROUTING:nat:IPv4',
       'DOCKER:nat:IPv4',
     ]:
       purge => false,
