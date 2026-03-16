@@ -35,3 +35,4 @@ class role::linux_firewall {
     ]:
       purge => false,
   }
+}
