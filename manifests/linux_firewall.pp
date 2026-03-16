@@ -11,4 +11,8 @@ class role::linux_firewall {
   Class['profile::linux_firewall::pre']
   -> Class['profile::linux_firewall::rules']
   -> Class['profile::linux_firewall::post']
+
+  resources { 'firewall':
+    purge => true,
+  }
 }
