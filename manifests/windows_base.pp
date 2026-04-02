@@ -6,6 +6,10 @@
 #   include role::windows_base
 class role::windows_base {
   include profile::base_windows
+  include profile::choco_setup
   include profile::choco_windows
   include profile::reg_windows
+
+  Class['profile::choco_setup']
+  -> Class['profile::choco_windows']
 }

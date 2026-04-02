@@ -6,6 +6,7 @@
 #   include role::windows_dc
 class role::windows_dc {
   include profile::base_windows
+  include profile::choco_setup
   include profile::choco_windows
   include profile::windows_dc_setup
   include profile::windows_dc_features
@@ -13,5 +14,6 @@ class role::windows_dc {
   Class['profile::base_windows']
   -> Class['profile::windows_dc_setup']
   -> Class['profile::windows_dc_features']
+  -> Class['profile::choco_setup']
   -> Class['profile::choco_windows']
 }
