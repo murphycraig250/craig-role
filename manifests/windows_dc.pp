@@ -12,10 +12,10 @@ class role::windows_dc {
   include profile::windows_dc_features
   include profile::windows_users
 
-  Class['profile::base_windows']
-  -> Class['profile::windows_dc_setup']
+  Class['profile::windows_dc_setup']
   -> Class['profile::windows_dc_features']
   -> Class['profile::choco_setup']
   -> Class['profile::choco_windows']
   -> Class['profile::windows_users']
+  -> Class['profile::base_windows']
 }
