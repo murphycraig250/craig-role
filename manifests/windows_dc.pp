@@ -7,6 +7,13 @@
 class role::windows_dc {
   include profile::choco_setup
   include profile::choco_windows
-  include profile::windows_dc_features
-  include profile::domain_controller
+  include profile::dc_features
+  include profile::dc_promotion
+  include profile::dc_network
 }
+
+Class['profile::choco_setup']
+-> Class['profile::choco_windows']
+-> Class['profile::dc_network']
+-> Class['profile::dc_features']
+-> Class['profile::dc_promotion']
