@@ -11,6 +11,7 @@ class role::windows_dc {
   include profile::dc_promotion
   include profile::dc_network
   include profile::dc_ous
+  include profile::dc_groups
 
   Class['profile::choco_setup']
   -> Class['profile::choco_windows']
@@ -18,4 +19,5 @@ class role::windows_dc {
   -> Class['profile::dc_features']
   -> Class['profile::dc_promotion']
   -> Class['profile::dc_ous']
+  -> Class['profile::dc_groups']
 }
