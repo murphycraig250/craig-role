@@ -5,7 +5,7 @@
 # @example
 #   include role::windows_dc
 class role::windows_dc {
-  include profile::base_windows
   include profile::choco_setup
   include profile::choco_windows
+  include profile::windows_dc_features
 }
