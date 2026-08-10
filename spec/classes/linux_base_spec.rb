@@ -8,6 +8,15 @@ describe 'role::linux_base' do
     context "on #{os}" do
       let(:facts) { os_facts }
 
+      # Provide user_list as a parameter to avoid Hiera lookup and eyaml errors
+      let(:pre_condition) do
+        <<-PUPPET
+          class { 'profile::linux_user':
+            user_list => {},
+          }
+        PUPPET
+      end
+
       it { is_expected.to compile.with_all_deps }
     end
   end

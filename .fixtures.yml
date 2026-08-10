@@ -12,5 +12,6 @@ fixtures:
     cron: "puppet-cron"
     sudo: "saz-sudo"
     sshkeys_core: "puppetlabs-sshkeys_core"
+    powershell: "puppetlabs-powershell"
   repositories:
     profile: "https://x-access-token:${GITHUB_TOKEN}@github.com/murphycraig250/craig-profile.git"
