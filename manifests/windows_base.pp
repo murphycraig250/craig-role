@@ -9,6 +9,7 @@ class role::windows_base {
   include profile::choco_setup
   include profile::choco_windows
   include profile::reg_windows
+  include profile::pwsh_labtools
 
   Class['profile::choco_setup']
   -> Class['profile::choco_windows']
